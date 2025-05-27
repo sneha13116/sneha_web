@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - Shopare Nepal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo-title">
+      <img src="images/logo.jpg/logo.png" alt="Shopare Nepal Logo" width="60" height="60" />
+      <div>
+        <h1>Shopare Nepal</h1>
+        <p>Where Technology Meets Trust</p>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+      <a href="sign up.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="checkout-section">
+      <h2>Checkout</h2>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div id="order-items"></div>
+        <p><strong>Total:</strong> <span id="order-total">Rs. 0</span></p>
+      </div>
+
+      <form class="checkout-form">
+        <h3>Shipping Information</h3>
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="address">Shipping Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <button type="submit">Place Order</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Shopare Nepal. All rights reserved.</p>
+  </footer>
+
+  <script>
+    
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const orderItemsDiv = document.getElementById("order-items");
+    const orderTotalSpan = document.getElementById("order-total");
+    let total = 0;
+
+    cart.forEach(item => {
+      const itemElement = document.createElement("p");
+      itemElement.textContent = ${item.name} - Rs. ${item.price};
+      orderItemsDiv.appendChild(itemElement);
+      total += parseFloat(item.price.replace(/[^\d.]/g, ''));
+    });
+
+    orderTotalSpan.textContent = Rs. ${total.toFixed(2)};
+
+    document.querySelector(".checkout-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Order placed successfully!");
+      localStorage.removeItem("cart");
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>

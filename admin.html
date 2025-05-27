@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - Shopare Nepal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo-title">
+      <img src="images/logo.jpg/logo.png" alt="Shopare Nepal Logo" width="60" height="60" />
+      <div>
+        <h1>Admin Panel</h1>
+        <p>Manage Shopare Nepal</p>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin-products.html">Products</a>
+      <a href="admin-orders.html">Orders</a>
+    </nav>
+  </header>
+
+  <main class="admin-section">
+    <h2>Welcome, Admin!</h2>
+    <div class="admin-links">
+      <a href="admin-products.html"><button>Manage Products</button></a>
+      <a href="admin-orders.html"><button>View Orders</button></a>
+    </div>
+  </main>
+<script>
+  if (localStorage.getItem('adminLoggedIn') !== 'true') {
+    window.location.href = 'admin-login.html';
+  }
+</script>
+  <footer class="footer">
+    <p>&copy; 2025 Shopare Nepal. All rights reserved.</p>
+  </footer>
+<button id="logoutBtn" style="float:right; margin:10px;">Logout</button>
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('adminLoggedIn');
+    window.location.href = 'admin-login.html';
+  });
+</script>
+</body>
+</html>

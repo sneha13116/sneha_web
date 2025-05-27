@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Orders</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo-title">
+      <img src="images/logo.jpg/logo.png" alt="Shopare Nepal Logo" width="60" height="60" />
+      <div>
+        <h1>Admin Panel</h1>
+        <p>Customer Orders</p>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin.html">Dashboard</a>
+      <a href="admin-products.html">Products</a>
+    </nav>
+  </header>
+
+  <main class="admin-section">
+    <h2>Order Management</h2>
+
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Shipping Address</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#1001</td>
+          <td>Sneha Sampang Rai</td>
+          <td>CCTV Camera</td>
+          <td>1</td>
+          <td>Rs. 6,500</td>
+          <td>Kanyam,Fikkal</td>
+          <td>Pending</td>
+        </tr>
+        <tr>
+          <td>#1002</td>
+          <td>Nomita Gurung</td>
+          <td>Bluetooth Speaker</td>
+          <td>2</td>
+          <td>Rs. 5,000</td>
+          <td>Biratchowk,Morang</td>
+          <td>Shipped</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+<script>
+  if (localStorage.getItem('adminLoggedIn') !== 'true') {
+    window.location.href = 'admin-login.html';
+  }
+</script>
+  <footer class="footer">
+    <p>&copy; 2025 Shopare Nepal. All rights reserved.</p>
+  </footer>
+<button id="logoutBtn" style="float:right; margin:10px;">Logout</button>
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('adminLoggedIn');
+    window.location.href = 'admin-login.html';
+  });
+</script>
+</body>
+</html>

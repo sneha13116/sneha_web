@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login - Shopare Nepal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="login-container">
+    <h2>Admin Login</h2>
+    <form id="adminLoginForm">
+      <label for="username">Username</label><br/>
+      <input type="text" id="username" name="username" required /><br/>
+
+      <label for="password">Password</label><br/>
+      <input type="password" id="password" name="password" required /><br/>
+
+      <button type="submit">Login</button>
+    </form>
+    <p id="error-msg" style="color:red; display:none;">Invalid username or password</p>
+  </main>
+<button id="logoutBtn" style="float:right; margin:10px;">Logout</button>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('adminLoggedIn');
+    window.location.href = 'admin-login.html';
+  });
+</script>
+  <script>
+    const form = document.getElementById('adminLoginForm');
+    const errorMsg = document.getElementById('error-msg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = form.username.value.trim();
+      const password = form.password.value.trim();
+
+
+      if (username === 'admin' && password === 'shopare123') {
+        
+        localStorage.setItem('adminLoggedIn', 'true');
+        window.location.href = 'admin.html';
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+<script>
+  if (localStorage.getItem('adminLoggedIn') !== 'true') {
+    window.location.href = 'admin-login.html';
+  }
+</script>
+<button id="logoutBtn" style="float:right; margin:10px;">Logout</button>
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('adminLoggedIn');
+    window.location.href = 'admin-login.html';
+  });
+</script>
+</body>
+</html>
